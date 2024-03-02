@@ -3,9 +3,10 @@ import { Shadow } from 'react-native-shadow-2';
 import StyledButton from './components/StyledButton';
 
 
+
 const image = { uri: 'https://www.eaglecreek.com/cdn/shop/articles/An_20empty_20page_20in_20a_20travel_20journal.jpg' }
 
-export default function Login() {
+export default function Login({navigation}) {
   return (
       <View style={styles.container}>
         <Shadow
@@ -27,10 +28,14 @@ export default function Login() {
                 <TextInput 
                 style={styles.input}
                 placeholder={'Password'}
+                secureTextEntry={true}
                 />
               </SafeAreaView>
               <Text style={{color:'#51C3C4', marginTop: 10 }}>Forgot Password?</Text>
               <StyledButton 
+                onPress={() =>
+                    navigation.navigate('Main')
+                  }
                 text={'Login'}
                 textStyle={styles.loginBtnText}
                 buttonStyle={styles.button}

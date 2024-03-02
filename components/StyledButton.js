@@ -1,9 +1,9 @@
 import { Pressable, Text, View, StyleSheet } from 'react-native';
 
-export default function StyledButton({ onPressOut, text, buttonStyle, textStyle }) {
+export default function StyledButton({ onPress, text, buttonStyle, textStyle }) {
   return (
       <Pressable
-        onPressOut={onPressOut} 
+        onPressOut={onPress} 
         style={( { pressed } ) => {
             return [pressed ? styles.pressed : styles.notPressed]
             }}

@@ -21,10 +21,24 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.crazybuff.journaly"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMapboxMapsDownloadToken": "sk.eyJ1IjoiY3JhenlidWZmIiwiYSI6ImNsdDl4bXV1cjFjN2Iyam1nNmJ3OXlhNnoifQ.mdHXB8ENGto6aBjZHMsuhQ"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "8e28c652-d3d8-4d1b-ba44-bac289fc1ed7"
+      }
     }
   }
 }
