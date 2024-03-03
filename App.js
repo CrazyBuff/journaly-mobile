@@ -16,11 +16,11 @@ export default function App() {
     setIsToggled(!isToggled);
     if (isToggled) {
       // console.log("Changing to Showing");
-      this._panel.show(600);
+      this._panel.hide();
     }
     else {
       // console.log("Change to hiding");
-      this._panel.hide();
+      this._panel.show(600);
     }
   }
 
@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
   friendsListTitle: {
     marginLeft: "auto",
     marginRight: "auto",
+    marginBottom: -25,
     paddingVertical: 5,
     fontSize: 30,
   },
