@@ -147,7 +147,8 @@ const styles = StyleSheet.create({
       marginTop: "auto",
       marginBottom: "auto",
       marginLeft: 10,
-      width: '100%'
+      width: '100%',
+      color: '#808080'
     },
     viewMapButton: {
       backgroundColor: "#8A51C4",
