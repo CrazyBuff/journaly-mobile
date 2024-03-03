@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
       width: '100%'
     },
     viewMapButton: {
-      backgroundColor: "#805DD7",
+      backgroundColor: "#8A51C4",
       paddingVertical: 5,
       paddingHorizontal: 10,
       marginVertical: 5,
