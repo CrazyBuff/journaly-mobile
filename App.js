@@ -36,14 +36,14 @@ export default function App() {
 
   const handleFriendsChange = () => {
     setTitle("Friends")
-    // setContent(<FriendsList/>)
-    setContent(<></>)
+    setContent(<FriendsList/>)
+    
     handleChange()
   }
 
   const handleActivityChange = () => {
     setTitle("Recent Activity")
-    // setContent(<FriendsList/>)
+    // setContent(<Recent Activity/>)
     setContent(<></>)
     handleChange()
   }
