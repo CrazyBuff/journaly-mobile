@@ -4,6 +4,8 @@ import ImageButton from './components/ImageButton';
 import SmallTextButton from './components/SmallTextButton';
 import SlidingUpPanel from 'rn-sliding-up-panel';
 import Map from './components/Map';
+import FriendsList from './components/FriendsList';
+import AccountTabView from './components/AccountMenu'
 
 const image = { uri: 'https://www.eaglecreek.com/cdn/shop/articles/An_20empty_20page_20in_20a_20travel_20journal.jpg' }
 let panelVal = 0
@@ -35,23 +37,49 @@ const requestLocationPermission = async () => {
 
 export default function Main({navigation}) {
   const [isToggled, setIsToggled] = useState(false);
-  const handleChange = () => {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState(<></>);
+
+    const handleChange = () => {
     setIsToggled(!isToggled);
     if (isToggled) {
       // console.log("Changing to Showing");
-      this._panel.hide();
+      this._panel.show(600);
     }
     else {
       // console.log("Change to hiding");
-      this._panel.show(600);
+      this._panel.hide();
     }
   }
+
+  const handleAccountChange = () => {
+    setTitle("Account")
+    setContent(<AccountTabView/>)
+    handleChange()
+  }
+
+  const handleFriendsChange = () => {
+    setTitle("Friends")
+    setContent(<FriendsList/>)
+    
+    handleChange()
+  }
+
+  const handleActivityChange = () => {
+    setTitle("Recent Activity")
+    // setContent(<Recent Activity/>)
+    setContent(<></>)
+    handleChange()
+  }
+
 
   const handleAddMemoryNavigation = () => {
     navigation.navigate("AddMemory")
   }
 
   const granted = requestLocationPermission();
+
+  
 
   return (
     <View style={styles.container}>
@@ -73,20 +101,21 @@ export default function Main({navigation}) {
         <SlidingUpPanel ref={c => this._panel = c} allowDragging={true} draggableRange={{top: 600, bottom: 0}} snappingPoints={[0, 600]}>
           <View style={styles.friends}>
             <Text style={styles.dragBox}> </Text>
-            <Text style={styles.friendsListTitle}>Friends</Text>
+            <Text style={styles.friendsListTitle}>{title}</Text>
+              {content}
           </View>
         </SlidingUpPanel>
         <View style={styles.dashboard}>
           <View style={styles.bottomButton}>
-            <SmallTextButton onPress={() => handleChange()} text="Friends"/>
+            <SmallTextButton onPress={() => handleFriendsChange()} text="Friends"/>
           </View>
           <ImageButton 
-            onPress={() => console.log("Button as component")} 
+            onPress={() => handleActivityChange()} 
             source={require("./assets/journaly-logo.png")}
             imageStyle={styles.logoButton}
           />
           <View style={styles.bottomButton}>
-            <SmallTextButton text="Account"/>
+            <SmallTextButton onPress={() => handleAccountChange()} text="Account"/>
           </View>
         </View>
   
