@@ -81,8 +81,8 @@ const styles = StyleSheet.create({
     marginLeft: 10
   },
   circle: {
-    height: 40,
-    width: 40,
+    height: 30,
+    width: 30,
     backgroundColor: "#CCCCCC",
     borderRadius: 30,
     marginTop: "auto",
