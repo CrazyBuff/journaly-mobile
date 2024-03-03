@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ImageBackground} from 'react-native';
+import { StyleSheet, Text, View, PermissionsAndroid} from 'react-native';
 import React, {useState} from 'react';
 import ImageButton from './components/ImageButton';
 import SmallTextButton from './components/SmallTextButton';
@@ -8,8 +8,32 @@ import Map from './components/Map';
 const image = { uri: 'https://www.eaglecreek.com/cdn/shop/articles/An_20empty_20page_20in_20a_20travel_20journal.jpg' }
 let panelVal = 0
 
-export default function Main({navigation}) {
 
+const requestLocationPermission = async () => {
+  try {
+    const granted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+      {
+        title: 'Journaly location permission',
+        message:
+          'Journaly needs to access your location ' +
+          'so you get to save your memories!',
+        buttonNeutral: 'Ask Me Later',
+        buttonNegative: 'Cancel',
+        buttonPositive: 'OK',
+      },
+    );
+    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+      console.log('Location permission granted');
+    } else {
+      console.log('Location permission denied');
+    }
+  } catch (err) {
+    console.warn(err);
+  }
+}
+
+export default function Main({navigation}) {
   const [isToggled, setIsToggled] = useState(false);
   const handleChange = () => {
     setIsToggled(!isToggled);
@@ -23,9 +47,11 @@ export default function Main({navigation}) {
     }
   }
 
+  const granted = requestLocationPermission();
+
   return (
     <View style={styles.container}>
-        <Map />
+      { granted ? <Map /> : <></>}
         {/* Top Buttons */}
         <View style={styles.cameraButton}>
           <ImageButton 

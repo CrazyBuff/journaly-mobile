@@ -1,13 +1,13 @@
-import { Image, Pressable, Text, View, StyleSheet } from 'react-native';
+import { Image, Pressable, View, StyleSheet } from 'react-native';
 
-export default function ImageButton({ onPress, source, imageStyle = styles.imageStyle}) {
+export default function ImageButton({ onPress, source, imageStyle = styles.imageStyle, viewStyle = styles.view}) {
   return (
       <Pressable
       onPress={onPress} 
       style={( { pressed } ) => {
         return [styles.row, pressed ? styles.pressed : styles.notPressed]
         }}>
-        <View style={styles.view}> 
+        <View style={viewStyle}> 
             <Image style={imageStyle} source={source} />
         </View>
       </Pressable>
