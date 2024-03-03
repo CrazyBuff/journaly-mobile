@@ -3,12 +3,12 @@ import { StyleSheet, View, PermissionsAndroid, Image } from 'react-native';
 import Mapbox from '@rnmapbox/maps';
 import * as Location from 'expo-location';
 import ImageButton from './ImageButton';
-
+import { Button } from 'react-native';
 
 Mapbox.setAccessToken('pk.eyJ1IjoiY3JhenlidWZmIiwiYSI6ImNsdDlwM2dnbzAwMjAya251NG1sa2JiYWsifQ.CYVOTw9TmMO9YUSzYzBYjg');
 
 
-const Map = () => {
+const Map = ({handleNav}) => {
     const [userLocation, setUserLocation] = useState(null)  
     const [calloutVisible, setCalloutVisible] = useState(false);
     const [coordinates, setCoordinates] = useState(null);
@@ -18,6 +18,7 @@ const Map = () => {
 
 
     const handleAddMemory = (coords) => {
+      console.log(coords)
       setCoordinates(coords);
       setAddingMemory(!addingMemory)
     }
@@ -55,8 +56,10 @@ const Map = () => {
                 key="memoryAdder"
                 id="memoryAdder"
                 coordinate={coordinates}
+                onSelected={handleNav}
               >
-                <ImageButton source={require('../assets/addMemoryMapIcon.png')} viewStyle={styles.view} />
+              
+                  <Image source={require('../assets/addMemoryMapIcon.png')} style={styles.memoryIcon} />
               </Mapbox.PointAnnotation> :
               null
             }
@@ -90,6 +93,7 @@ const styles = StyleSheet.create({
     marginTop: -80
   },
   view: {
-
+    width: 50,
+    height: 50
   }
 });

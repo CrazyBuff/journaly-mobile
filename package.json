@@ -26,7 +26,9 @@
     "react-native-svg": "14.1.0",
     "react-native-web": "~0.19.6",
     "rn-sliding-up-panel": "^2.4.6",
-    "expo-location": "~16.5.5"
+    "expo-location": "~16.5.5",
+    "expo-camera": "~14.0.5",
+    "expo-image-picker": "~14.7.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

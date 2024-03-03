@@ -47,11 +47,15 @@ export default function Main({navigation}) {
     }
   }
 
+  const handleAddMemoryNavigation = () => {
+    navigation.navigate("AddMemory")
+  }
+
   const granted = requestLocationPermission();
 
   return (
     <View style={styles.container}>
-      { granted ? <Map /> : <></>}
+      { granted ? <Map handleNav={handleAddMemoryNavigation} /> : <></>}
         {/* Top Buttons */}
         <View style={styles.cameraButton}>
           <ImageButton 
